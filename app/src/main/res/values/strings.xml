@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">PetBnBCodePath</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="generic_error">:-O Something went wrong!</string>
+    <string name="search">Search</string>
+    <string name="whereto">Where at?</string>
+    <string name="sitter_std_string">is a verified host!</string>
+    <string name="reviews">Reviews</string>
+    <string name="review">Review</string>
+
+    <string-array name="pet_strings_suffix">
+        <item>could be yours</item>
+        <item>loves belly rubs</item>
+    </string-array>
+
+    <string-array name="pet_strings_prefix">
+        <item>You know you want to play with</item>
+        <item>Have a cuddly staycation with</item>
+    </string-array>
+    <string name="title_activity_map">MapActivity</string>
+
+    <string name="ellipsis" msgid="7899829516048813237">"…"</string>
+
+
+</resources>

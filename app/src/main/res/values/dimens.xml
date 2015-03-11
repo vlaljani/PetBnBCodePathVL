@@ -1,0 +1,10 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="search_box_margin">32dp</dimen>
+    <dimen name="landing_item_description_margin">16dp</dimen>
+    <dimen name="city_text_margin">5dp</dimen>
+    <dimen name="textview_hint_padding">5dp</dimen>
+    <dimen name="zero_height">0dp</dimen>
+</resources>
