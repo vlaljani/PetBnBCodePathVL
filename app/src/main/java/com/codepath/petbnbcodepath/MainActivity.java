@@ -10,6 +10,7 @@ import android.graphics.ColorFilter;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,12 +23,14 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.codepath.petbnbcodepath.adapters.LandingPageAdapter;
 import com.codepath.petbnbcodepath.adapters.PlacesAutoCompleteAdapter;
+import com.codepath.petbnbcodepath.fragments.LandingPageFragment;
 import com.codepath.petbnbcodepath.helpers.Constants;
 import com.codepath.petbnbcodepath.models.Listing;
 import com.google.android.gms.common.ConnectionResult;
@@ -50,13 +53,12 @@ import java.util.List;
 public class MainActivity extends ActionBarActivity implements
                                                     GoogleApiClient.ConnectionCallbacks,
                                                     LocationListener,
-                                                    GoogleApiClient.OnConnectionFailedListener{
+                                                    GoogleApiClient.OnConnectionFailedListener,
+                                                    LandingPageFragment.OnLandingPageListener {
     private static final String TAG = "MAINACTIVITY";
 
-    private ListView lvLandingPage;
-    private ArrayList<Listing> sitterArrayList;
-    private ArrayAdapter<Listing> sitterArrayAdapter;
-    private AutoCompleteTextView etSearch;
+    private FrameLayout frag_landing_page;
+    private LandingPageFragment landingPageFragment;
 
     private GoogleApiClient mGoogleApiClient;
 
@@ -78,10 +80,11 @@ public class MainActivity extends ActionBarActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setupViews();
-        getPetVacayListingData();
     }
 
     private void setupViews() {
+
+        frag_landing_page = (FrameLayout) findViewById(R.id.frag_landing_page);
 
         // Create the location client to start receiving updates
         mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -89,74 +92,9 @@ public class MainActivity extends ActionBarActivity implements
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this).build();
 
-        WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
-        Display display = wm.getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        int targetWidth = size.x;
-
-        View landingPageView = LayoutInflater.from(this).inflate(R.layout.landing_page_header, null);
-        ImageView ivBg = (ImageView) landingPageView.findViewById(R.id.ivBg);
-        etSearch = (AutoCompleteTextView) landingPageView.findViewById(R.id.etSearch);
-        etSearch.setAdapter(new PlacesAutoCompleteAdapter(this, R.layout.list_item));
-
-        Drawable headerDrawable = getResources().getDrawable(R.drawable.landingpagebg);
-        int currWidth = headerDrawable.getIntrinsicWidth();
-        int currHeight = headerDrawable.getIntrinsicHeight();
-        int origAspectRatio = currWidth / currHeight;
-        int targetHeight = targetWidth / origAspectRatio;
-
-        // Load a bitmap from the drawable folder
-        Bitmap bMap = BitmapFactory.decodeResource(getResources(), R.drawable.landingpagebg);
-        // Resize the bitmap to 150x100 (width x height)
-        Bitmap bMapScaled = Bitmap.createScaledBitmap(bMap, targetWidth, targetHeight, true);
-        // Loads the resized Bitmap into an ImageView
-        ivBg.setImageBitmap(bMapScaled);
-
-        lvLandingPage = (ListView) findViewById(R.id.lvLandingPage);
-        lvLandingPage.addHeaderView(landingPageView, null, false);
-        sitterArrayList = new ArrayList<>();
-        sitterArrayAdapter = new LandingPageAdapter(this, sitterArrayList);
-        lvLandingPage.setAdapter(sitterArrayAdapter);
-
-        setupViewListeners();
     }
 
-    public void setupViewListeners() {
-        etSearch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String query = (String) parent.getItemAtPosition(position);
-                Toast.makeText(MainActivity.this, query, Toast.LENGTH_SHORT).show();
-            }
-        });
 
-        lvLandingPage.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Listing currListing = (Listing) parent.getItemAtPosition(position);
-                if (currListing.getLatLng() != null) {
-                    Toast.makeText(MainActivity.this,
-                            String.valueOf(currListing.getLatLng().getLatitude()) + ", " +
-                            String.valueOf(currListing.getLatLng().getLongitude()),
-                            Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(MainActivity.this, MapActivity.class);
-                    i.putExtra(Constants.latitude, currListing.getLatLng().getLatitude());
-                    i.putExtra(Constants.longitude, currListing.getLatLng().getLongitude());
-                    startActivity(i);
-                } else {
-                    Intent i = new Intent(MainActivity.this, MapActivity.class);
-                    i.putExtra(Constants.latitude, currLatLng.getLatitude());
-                    i.putExtra(Constants.longitude, currLatLng.getLongitude());
-                    startActivity(i);
-                    Toast.makeText(MainActivity.this,
-                            "current gps coordinates",
-                            Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        });
-    }
 
     protected void onStart() {
         super.onStart();
@@ -176,8 +114,14 @@ public class MainActivity extends ActionBarActivity implements
         Toast.makeText(this, Double.toString(mCurrentLocation.getLatitude()) + "," +
                 Double.toString(mCurrentLocation.getLongitude()), Toast.LENGTH_LONG).show();
         currLatLng = new ParseGeoPoint(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude());
-        Toast.makeText(this, Double.toString(mCurrentLocation.getLatitude()) + "," +
+        Toast.makeText(this, "new! " + Double.toString(mCurrentLocation.getLatitude()) + "," +
                 Double.toString(mCurrentLocation.getLongitude()), Toast.LENGTH_LONG).show();
+
+        landingPageFragment = LandingPageFragment.newInstance(
+                                   mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude());
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.frag_landing_page, landingPageFragment);
+        ft.commit();
 
         startLocationUpdates();
     }
@@ -207,6 +151,12 @@ public class MainActivity extends ActionBarActivity implements
                 Double.toString(location.getLongitude());
         currLatLng = new ParseGeoPoint(location.getLatitude(), location.getLongitude());
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+
+        landingPageFragment = LandingPageFragment.newInstance(
+                location.getLatitude(), location.getLongitude());
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.frag_landing_page, landingPageFragment);
+        ft.commit();
     }
 
     /*
@@ -245,27 +195,6 @@ public class MainActivity extends ActionBarActivity implements
         return true;
     }
 
-    public void getPetVacayListingData() {
-        ParseQuery<ParseObject> query = ParseQuery.getQuery(Constants.petVacayListingTable);
-        //Log.i(TAG, "" + currLatLng.getLatitude() + "," + currLatLng.getLongitude());
-        //query.whereWithinMiles(Constants.listingLatlngKey, currLatLng, Constants.whereWithinMiles);
-        query.include(Constants.sitterIdKey);
-        query.findInBackground(new FindCallback<ParseObject>() {
-            public void done(List<ParseObject> listingList, ParseException e) {
-                if (e == null) {
-                    sitterArrayList.addAll(Listing.fromParseObjectList(listingList));
-                    sitterArrayAdapter.notifyDataSetChanged();
-                } else {
-                    Log.e(TAG, "Error: " + e.getMessage());
-
-                    Toast.makeText(MainActivity.this,
-                            getResources().getString(R.string.generic_error),
-                            Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-    }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -279,5 +208,21 @@ public class MainActivity extends ActionBarActivity implements
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onLoginSignup(View view) {
+        Intent i = new Intent(MainActivity.this, LoginSignupActivity.class);
+        startActivity(i);
+    }
+
+    public void onEtQuerySubmit(String query) {
+        Toast.makeText(MainActivity.this, query, Toast.LENGTH_SHORT).show();
+    }
+
+    public void onlvLandingPageItemClick(double latitude, double longitude) {
+        Intent i = new Intent(MainActivity.this, MapActivity.class);
+        i.putExtra(Constants.latitude, currLatLng.getLatitude());
+        i.putExtra(Constants.longitude, currLatLng.getLongitude());
+        startActivity(i);
     }
 }

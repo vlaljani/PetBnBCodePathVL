@@ -5,4 +5,9 @@
     <color name="dark_gray">#41464C</color>
     <color name="light_gray">#7C7C7C</color>
     <color name="red">#ff5252</color>
+    <color name="facebook_blue">#3B5893</color>
+    <color name="facebook_light_blue">#607AA9</color>
+    <color name="google_red">#D6483A</color>
+    <color name="google_light_red">#E96A56</color>
+    <color name="bgWhite">#FFFFFF</color>
 </resources>

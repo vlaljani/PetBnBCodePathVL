@@ -30,4 +30,5 @@ dependencies {
     // libraries for Google maps and location services
     compile 'com.google.android.gms:play-services:6.5.+'
     compile 'com.google.maps.android:android-maps-utils:0.3+'
+    compile 'com.github.traex.calendarlistview:library:1.2.2'
 }

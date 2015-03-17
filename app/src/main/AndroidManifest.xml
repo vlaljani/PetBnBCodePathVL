@@ -66,7 +66,7 @@
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
 
-<!--                   IMPORTANT: Change "com.parse.tutorials.pushnotifications" to match your app's package name. -->
+                <!-- IMPORTANT: Change "com.parse.tutorials.pushnotifications" to match your app's package name. -->
                 <category android:name="com.codepath.petbnbcodepath" />
             </intent-filter>
         </receiver>
@@ -97,6 +97,14 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.codepath.petbnbcodepath.MainActivity" />
+        </activity>
+        <activity
+            android:name=".LoginSignupActivity"
+            android:label="@string/title_activity_login_signup" >
+        </activity>
+        <activity
+            android:name=".BookingDetailsActivity"
+            android:label="@string/title_activity_booking_details" >
         </activity>
     </application>
 

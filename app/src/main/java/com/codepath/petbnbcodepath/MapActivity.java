@@ -1,5 +1,6 @@
 package com.codepath.petbnbcodepath;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -36,7 +37,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MapActivity extends ActionBarActivity {
+public class MapActivity extends ActionBarActivity
+                         implements GoogleMap.OnMarkerClickListener, ListingSummaryFragment.OnBtnDetsListener {
 
     private static final String TAG = "MAPACTIVITY";
 
@@ -50,6 +52,17 @@ public class MapActivity extends ActionBarActivity {
     private IconGenerator iconFactoryTeal;
     private IconGenerator iconFactoryRed;
 
+
+    public void onBtnDetsClick(String coverPictureUrl, String firstName, String lastName,
+                               int numReviews, int cost ) {
+        Intent i = new Intent(MapActivity.this, BookingDetailsActivity.class);
+        i.putExtra(Constants.coverPictureKey, coverPictureUrl);
+        i.putExtra(Constants.firstNameKey, firstName);
+        i.putExtra(Constants.lastNameKey, lastName);
+        i.putExtra(Constants.numReviewsKey, numReviews);
+        i.putExtra(Constants.listingCostKey, cost);
+        startActivity(i);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,6 +130,7 @@ public class MapActivity extends ActionBarActivity {
                         .anchor(iconFactoryTeal.getAnchorU(), iconFactoryTeal.getAnchorV());
             }
             markers.add(map.addMarker(currMarker));
+
 
         }
 
@@ -187,6 +201,17 @@ public class MapActivity extends ActionBarActivity {
         });
     }
 
+    @Override
+    public boolean onMarkerClick(final Marker marker) {
+
+        for (int i = 0; i < markers.size(); i++) {
+            if (marker.equals(markers.get(i))) {
+                vpPager.setCurrentItem(i);
+                return true;
+            }
+        }
+        return false;
+    }
 
     private void getNearbyListings(double latitude, double longitude) {
         String sitterIdKey = "sitterId";
@@ -233,6 +258,7 @@ public class MapActivity extends ActionBarActivity {
         } else {
             Toast.makeText(this, "Error - Map was null!!", Toast.LENGTH_SHORT).show();
         }
+        map.setOnMarkerClickListener(this);
     }
 
 

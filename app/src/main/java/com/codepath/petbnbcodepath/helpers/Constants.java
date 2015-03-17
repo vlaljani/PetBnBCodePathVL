@@ -37,4 +37,10 @@ public class Constants {
 
     public static final String currencySymbol = Currency.getInstance(Locale.US).getSymbol(Locale.US);
 
+    public static final String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$";
+
+    public static final float btnDisabledAlpha = 0.2f;
+    public static final float btnEnabledAlpha = 1;
+
+    public static final double service_charge_percentage = 0.15;
 }

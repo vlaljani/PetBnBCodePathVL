@@ -7,4 +7,24 @@
     <dimen name="city_text_margin">5dp</dimen>
     <dimen name="textview_hint_padding">5dp</dimen>
     <dimen name="zero_height">0dp</dimen>
+    <dimen name="zero_width">0dp</dimen>
+    <dimen name="login_button_padding">25dp</dimen>
+    <dimen name="button_vert_distance">10dp</dimen>
+    <dimen name="showMoreDist">20dp</dimen>
+    <dimen name="btn_corner_radius">25dp</dimen>
+    <dimen name="btn_horizontal_dist">12dp</dimen>
+    <dimen name="logo_vert_dist">50dp</dimen>
+    <dimen name="edit_text_padding">10dp</dimen>
+    <dimen name="listing_summary_height">120dp</dimen>
+    <dimen name="only_charge_margin">50dp</dimen>
+    <dimen name="msg_host_height">75dp</dimen>
+
+    <dimen name="book_det_dates_margin_top">40dp</dimen>
+    <dimen name="book_det_dates_margin_bottom">20dp</dimen>
+
+    <dimen name="sel_dates_margin">25dp</dimen>
+    <dimen name="sel_dates_button_padding">10dp</dimen>
+    <dimen name="expandable_lv_height">150dp</dimen>
+
+    <dimen name="lv_header_left_padding">30dp</dimen>
 </resources>

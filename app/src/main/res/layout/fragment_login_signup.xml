@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.codepath.petbnbcodepath.LoginSignupActivity">
+
+    <ImageView
+        android:id="@+id/ivBg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/dark_gray"
+        android:adjustViewBounds="true"
+        android:src="@drawable/two_cats_summer_fishing"
+        android:scaleType="centerCrop"
+        />
+    <TextView
+        android:id="@+id/tvLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:text="@string/petVacay"
+        android:drawableLeft="@mipmap/ic_paw"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/logo_vert_dist"/>
+    <Button
+        android:id="@+id/btnFacebookLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/login_button_padding"
+        android:layout_marginStart="@dimen/login_button_padding"
+        android:layout_marginRight="@dimen/login_button_padding"
+        android:layout_marginEnd="@dimen/login_button_padding"
+        android:text="@string/facebook"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:background="@drawable/btnfacebook"/>
+    <Button
+        android:id="@+id/btnGoogleLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btngoogle"
+        android:text="@string/google"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:layout_alignLeft="@+id/btnFacebookLogin"
+        android:layout_alignStart="@+id/btnFacebookLogin"
+        android:layout_alignRight="@+id/btnFacebookLogin"
+        android:layout_alignEnd="@+id/btnFacebookLogin"
+        android:layout_below="@+id/btnFacebookLogin"
+        android:layout_marginTop="@dimen/button_vert_distance"
+        />
+
+    <LinearLayout
+        android:id="@+id/btnsLoginSignup"
+        android:layout_below="@+id/btnGoogleLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnGoogleLogin"
+        android:layout_alignStart="@+id/btnGoogleLogin"
+        android:layout_alignRight="@+id/btnGoogleLogin"
+        android:layout_alignEnd="@+id/btnGoogleLogin"
+        android:layout_marginTop="@dimen/button_vert_distance">
+
+        <Button
+            android:id="@+id/btnSignUp"
+            android:layout_width="@dimen/zero_width"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/signup"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:background="@drawable/btnlogin"
+            android:layout_marginRight="@dimen/btn_horizontal_dist"
+
+            />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="@dimen/zero_width"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/login"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:background="@drawable/btnlogin"
+            android:layout_marginLeft="@dimen/btn_horizontal_dist"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvShowMore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:layout_below="@+id/btnsLoginSignup"
+        android:layout_marginTop="@dimen/showMoreDist"
+        android:text="@string/showMore"/>
+    <TextView
+        android:id="@+id/tvTerms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/dark_gray"
+        android:alpha="0.20"
+        />
+
+</RelativeLayout>

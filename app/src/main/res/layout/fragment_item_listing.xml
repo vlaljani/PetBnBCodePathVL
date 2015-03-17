@@ -53,5 +53,13 @@
         android:layout_alignParentBottom="true"
         android:text="Book"
         android:onClick="onSendPush"/>
+    <Button
+        android:id="@+id/btnDets"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/btnBook"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:layout_alignParentBottom="true"
+        android:text="Dets"/>
 
 </RelativeLayout>

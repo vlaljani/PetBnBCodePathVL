@@ -1,11 +1,13 @@
 package com.codepath.petbnbcodepath.fragments;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -31,6 +33,26 @@ public class ListingSummaryFragment extends Fragment {
     private TextView tvNumReviews;
     private TextView tvCost;
 
+    private Button btnDets;
+
+    private OnBtnDetsListener listener;
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (activity instanceof OnBtnDetsListener) {
+            listener = (OnBtnDetsListener) activity;
+        } else {
+            throw new ClassCastException(activity.toString()
+                    + " must implement MyListFragment.OnItemSelectedListener");
+        }
+    }
+
+    public interface OnBtnDetsListener {
+        public void onBtnDetsClick(String coverPictureUrl, String firstName, String lastName,
+                                   int numReviews, int cost);
+    }
+
 
     // Inflation logic
     @Override
@@ -50,6 +72,8 @@ public class ListingSummaryFragment extends Fragment {
         tvNumReviews = (TextView) view.findViewById(R.id.tvNumReviews);
         tvCost = (TextView) view.findViewById(R.id.tvCost);
 
+        btnDets = (Button) view.findViewById(R.id.btnDets);
+
         Picasso.with(getActivity()).load(getArguments().getString(Constants.coverPictureKey))
                 .into(ivCoverPicture);
         tvSummary.setText(getArguments().getString(Constants.summaryKey));
@@ -63,6 +87,22 @@ public class ListingSummaryFragment extends Fragment {
         }
         tvCost.setText(Constants.currencySymbol +
                                   String.valueOf(getArguments().getInt(Constants.listingCostKey)));
+
+        setupViewListeners();
+    }
+
+    private void setupViewListeners() {
+        btnDets.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onBtnDetsClick(getArguments().getString(Constants.coverPictureKey),
+                        getArguments().getString(Constants.summaryKey).split(" ")[0],
+                        getArguments().getString(Constants.summaryKey).split(" ")[1],
+                        getArguments().getInt(Constants.numReviewsKey),
+                        getArguments().getInt(Constants.listingCostKey));
+            }
+        });
+
     }
 
     public static ListingSummaryFragment newInstance(Listing listing) {

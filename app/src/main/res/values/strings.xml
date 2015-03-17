@@ -10,19 +10,64 @@
     <string name="sitter_std_string">is a verified host!</string>
     <string name="reviews">Reviews</string>
     <string name="review">Review</string>
+    <string name="facebook">Facebook</string>
+    <string name="google">Google</string>
+    <string name="login">Log In</string>
+    <string name="signup">Sign Up</string>
+    <string name="showMore">Show More</string>
+    <string name="bySigningUp">By signing up, I agree to PetVacay\'s</string>
+    <string name="petVacay">petvacay</string>
+    <string name="email_address">Email Address</string>
+    <string name="password">Password</string>
+    <string name="forgotPwd">Forgot Password?</string>
+    <string name="firstName">First Name</string>
+    <string name="lastName">Last Name</string>
+    <string name="checkEmail">Please check your email address!</string>
 
-    <string-array name="pet_strings_suffix">
-        <item>could be yours</item>
-        <item>loves belly rubs</item>
+    <string-array name="terms_array">
+        <item name="terms">Terms of Service</item>
+        <item name="privacy">Privacy Policy</item>
+        <item name="guestRefund">Guest Refund Policy</item>
+        <item name="hostGuarantee">Host Guarantee Terms</item>
     </string-array>
 
-    <string-array name="pet_strings_prefix">
-        <item>You know you want to play with</item>
-        <item>Have a cuddly staycation with</item>
-    </string-array>
     <string name="title_activity_map">MapActivity</string>
 
     <string name="ellipsis" msgid="7899829516048813237">"…"</string>
+    <string name="title_activity_login_signup">LoginSignupActivity</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_signup">SignupActivity</string>
+
+    <string name="login_error">Log In Error</string>
+    <string name="signup_error">Sign Up Error</string>
+    <string name="invalid_cred_msg">Invalid email or password. Please try again.</string>
+    <string name="user_exists_err_msg">That email address is already in use.</string>
+
+    <string name="OK">OK</string>
+    <string name="alert_image_content_description">Alert Image</string>
+    <string name="title_activity_booking_details">BookingDetailsActivity</string>
+
+    <string name="price">Price</string>
+    <string name="dates">Dates</string>
+    <string name="req_to_book">Book Now!</string>
+
+    <string name="only_charge">You\'ll only be charged if the host accepts your request within 24 hours.</string>
+
+    <string name="say_hello_1">Tell your pet\'s host</string>
+    <string name="say_hello_2">, "Hello"</string>
+
+    <string name="say_hello_det_1">Let</string>
+    <string name="say_hello_det_2"> know more about your adorable pet!</string>
+
+    <string name="msg_host">Message your pet\'s host ...</string>
+    <string name="pick_up">Pick Up</string>
+    <string name="drop_off">Drop Off</string>
+    <string name="sel_date">Select Date</string>
+
+    <string name="total">Total</string>
+    <string name="times">x</string>
+    <string name="nights">nights</string>
+    <string name="service_fee">Service Fee</string>
 
 
 </resources>
