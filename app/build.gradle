@@ -31,4 +31,5 @@ dependencies {
     compile 'com.google.android.gms:play-services:6.5.+'
     compile 'com.google.maps.android:android-maps-utils:0.3+'
     compile 'com.github.traex.calendarlistview:library:1.2.2'
+    compile files('libs/joda-time-2.7.jar')
 }

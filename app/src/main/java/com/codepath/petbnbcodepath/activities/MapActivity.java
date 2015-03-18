@@ -1,4 +1,4 @@
-package com.codepath.petbnbcodepath;
+package com.codepath.petbnbcodepath.activities;
 
 import android.content.Intent;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.codepath.petbnbcodepath.R;
 import com.codepath.petbnbcodepath.fragments.ListingSummaryFragment;
 import com.codepath.petbnbcodepath.helpers.Constants;
 import com.codepath.petbnbcodepath.models.Listing;
@@ -54,13 +55,14 @@ public class MapActivity extends ActionBarActivity
 
 
     public void onBtnDetsClick(String coverPictureUrl, String firstName, String lastName,
-                               int numReviews, int cost ) {
+                               String objectId, int numReviews, int cost ) {
         Intent i = new Intent(MapActivity.this, BookingDetailsActivity.class);
         i.putExtra(Constants.coverPictureKey, coverPictureUrl);
         i.putExtra(Constants.firstNameKey, firstName);
         i.putExtra(Constants.lastNameKey, lastName);
         i.putExtra(Constants.numReviewsKey, numReviews);
         i.putExtra(Constants.listingCostKey, cost);
+        i.putExtra(Constants.objectIdKey, objectId);
         startActivity(i);
     }
 
@@ -98,7 +100,7 @@ public class MapActivity extends ActionBarActivity
         iconFactoryTeal.setTextAppearance(MapActivity.this, R.style.CodeFont);
 
         iconFactoryRed = new IconGenerator(MapActivity.this);
-        iconFactoryRed.setColor(getResources().getColor(R.color.red));
+        iconFactoryRed.setColor(getResources().getColor(R.color.vl_red));
         iconFactoryRed.setContentPadding(0, 0, 0, 0);
         iconFactoryRed.setTextAppearance(MapActivity.this, R.style.CodeFont);
 

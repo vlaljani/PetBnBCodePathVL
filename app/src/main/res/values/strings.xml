@@ -69,5 +69,8 @@
     <string name="nights">nights</string>
     <string name="service_fee">Service Fee</string>
 
+    <string name="sel_drop_date">Select Drop-off Date</string>
+    <string name="sel_pickup_date">Select Pick-up Date</string>
+
 
 </resources>

@@ -1,25 +1,14 @@
-package com.codepath.petbnbcodepath;
+package com.codepath.petbnbcodepath.activities;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Point;
-import android.graphics.drawable.Drawable;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.ImageView;
 
+import com.codepath.petbnbcodepath.R;
 import com.codepath.petbnbcodepath.fragments.LoginFragment;
 import com.codepath.petbnbcodepath.fragments.LoginSignUpFragment;
 import com.codepath.petbnbcodepath.fragments.SignUpFragment;

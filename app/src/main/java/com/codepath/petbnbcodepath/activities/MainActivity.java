@@ -1,53 +1,26 @@
-package com.codepath.petbnbcodepath;
+package com.codepath.petbnbcodepath.activities;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Point;
-import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Display;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.Toast;
 
-import com.codepath.petbnbcodepath.adapters.LandingPageAdapter;
-import com.codepath.petbnbcodepath.adapters.PlacesAutoCompleteAdapter;
+import com.codepath.petbnbcodepath.R;
 import com.codepath.petbnbcodepath.fragments.LandingPageFragment;
 import com.codepath.petbnbcodepath.helpers.Constants;
-import com.codepath.petbnbcodepath.models.Listing;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
-import com.parse.FindCallback;
 import com.parse.ParseGeoPoint;
-import com.parse.ParseObject;
-import com.parse.ParsePush;
-import com.parse.ParseQuery;
-import com.parse.ParseException;
-
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class MainActivity extends ActionBarActivity implements

@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:maxLines="2"
         android:ellipsize="middle"
-        android:textColor="@color/white"
+        android:textColor="@color/vl_white"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:textStyle="bold"
@@ -27,7 +27,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:textColor="@color/white"
+        android:textColor="@color/vl_white"
         android:textStyle="bold"/>
     <TextView
         android:id="@+id/tvCity"
@@ -36,7 +36,7 @@
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@+id/tvState"
         android:layout_toStartOf="@+id/tvState"
-        android:textColor="@color/white"
+        android:textColor="@color/vl_white"
         android:textStyle="bold"
         android:layout_marginRight="@dimen/city_text_margin"
         android:layout_marginEnd="@dimen/city_text_margin"/>
@@ -47,7 +47,7 @@
         android:layout_alignParentBottom="true"
         android:layout_toStartOf="@+id/tvCity"
         android:layout_toLeftOf="@+id/tvCity"
-        android:textColor="@color/white"
+        android:textColor="@color/vl_white"
         android:textStyle="bold"/>
 
 </RelativeLayout>

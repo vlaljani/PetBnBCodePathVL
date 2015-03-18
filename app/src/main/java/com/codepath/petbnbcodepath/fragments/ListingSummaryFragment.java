@@ -50,7 +50,7 @@ public class ListingSummaryFragment extends Fragment {
 
     public interface OnBtnDetsListener {
         public void onBtnDetsClick(String coverPictureUrl, String firstName, String lastName,
-                                   int numReviews, int cost);
+                                   String objectId, int numReviews, int cost);
     }
 
 
@@ -98,6 +98,7 @@ public class ListingSummaryFragment extends Fragment {
                 listener.onBtnDetsClick(getArguments().getString(Constants.coverPictureKey),
                         getArguments().getString(Constants.summaryKey).split(" ")[0],
                         getArguments().getString(Constants.summaryKey).split(" ")[1],
+                        getArguments().getString(Constants.objectIdKey),
                         getArguments().getInt(Constants.numReviewsKey),
                         getArguments().getInt(Constants.listingCostKey));
             }
@@ -111,6 +112,7 @@ public class ListingSummaryFragment extends Fragment {
         Bundle args = new Bundle();
         args.putString(Constants.coverPictureKey, listing.getCoverPictureUrl());
         args.putString(Constants.summaryKey, listing.getFirst_name() + " " + listing.getLast_name());
+        args.putString(Constants.objectIdKey, listing.getObjectId());
         args.putInt(Constants.numReviewsKey, listing.getNumReviews());
         args.putInt(Constants.listingCostKey, listing.getCost());
         listingSummaryFragment.setArguments(args);

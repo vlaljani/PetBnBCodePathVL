@@ -33,6 +33,12 @@ public class Listing {
     private String last_name;
     private String coverPictureUrl;
 
+    public String getObjectId() {
+        return objectId;
+    }
+
+    private String objectId;
+
     private int cost;
     private int numReviews;
 
@@ -119,6 +125,7 @@ public class Listing {
         currListing.latLng = listing.getParseGeoPoint(Constants.listingLatlngKey);
         currListing.client = new GoogleMapReverseGeoCodingClient();
         currListing.client.getCity(currListing.latLng);
+        currListing.objectId = listing.getObjectId();
 
         // listener pattern because the reverse geocoding call that returns the city is an
         // asynchronous call. So we set the city only when a value is returned
